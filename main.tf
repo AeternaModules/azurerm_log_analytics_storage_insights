@@ -1,5 +1,5 @@
-resource "azurerm_log_analytics_storage_insights" "log_analytics_storage_insightss" {
-  for_each = var.log_analytics_storage_insightss
+resource "azurerm_log_analytics_storage_insights" "log_analytics_storage_insightses" {
+  for_each = var.log_analytics_storage_insightses
 
   name                 = each.value.name
   resource_group_name  = each.value.resource_group_name

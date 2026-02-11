@@ -1,5 +1,5 @@
-output "log_analytics_storage_insightss" {
+output "log_analytics_storage_insightses" {
   description = "All log_analytics_storage_insights resources"
-  value       = azurerm_log_analytics_storage_insights.log_analytics_storage_insightss
+  value       = azurerm_log_analytics_storage_insights.log_analytics_storage_insightses
 }
 
