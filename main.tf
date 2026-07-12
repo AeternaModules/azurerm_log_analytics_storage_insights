@@ -1,10 +1,15 @@
+data "azurerm_key_vault_secret" "storage_account_key" {
+  for_each     = { for k, v in var.log_analytics_storage_insights : k => v if v.storage_account_key_key_vault_id != null && v.storage_account_key_key_vault_secret_name != null }
+  name         = each.value.storage_account_key_key_vault_secret_name
+  key_vault_id = each.value.storage_account_key_key_vault_id
+}
 resource "azurerm_log_analytics_storage_insights" "log_analytics_storage_insights" {
   for_each = var.log_analytics_storage_insights
 
   name                 = each.value.name
   resource_group_name  = each.value.resource_group_name
   storage_account_id   = each.value.storage_account_id
-  storage_account_key  = each.value.storage_account_key
+  storage_account_key  = each.value.storage_account_key != null ? each.value.storage_account_key : try(data.azurerm_key_vault_secret.storage_account_key[each.key].value, null)
   workspace_id         = each.value.workspace_id
   blob_container_names = each.value.blob_container_names
   table_names          = each.value.table_names
