@@ -1,6 +1,6 @@
-variable "log_analytics_storage_insightses" {
+variable "log_analytics_storage_insights" {
   description = <<EOT
-Map of log_analytics_storage_insightses, attributes below
+Map of log_analytics_storage_insights, attributes below
 Required:
     - name
     - resource_group_name
