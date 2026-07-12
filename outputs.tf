@@ -1,3 +1,7 @@
+output "log_analytics_storage_insightses_id" {
+  description = "Map of id values across all log_analytics_storage_insightses, keyed the same as var.log_analytics_storage_insightses"
+  value       = { for k, v in azurerm_log_analytics_storage_insights.log_analytics_storage_insightses : k => v.id }
+}
 output "log_analytics_storage_insightses_blob_container_names" {
   description = "Map of blob_container_names values across all log_analytics_storage_insightses, keyed the same as var.log_analytics_storage_insightses"
   value       = { for k, v in azurerm_log_analytics_storage_insights.log_analytics_storage_insightses : k => v.blob_container_names }
